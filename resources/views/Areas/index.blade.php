@@ -1,35 +1,14 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Area Network | Home</title>
-</head>
-
-<body>
+<x-layout>
     <h2>
         Currently available Areas
     </h2>
-    <p>
-        {{ $greeting }}
-    </p>
     <ul>
+        @foreach ($areas as $area)
         <li>
-            <a href="areas/{{ $areas[0]["id"] }}">
-                {{ $areas[0]["name"] }}
-            </a>
+            <x-card href="areas/{{ $area['id'] }}" :highlight="$area['population']>355">
+                <h3>{{ $area["name"] }}</h3>
+            </x-card>
         </li>
-                <li>
-            <a href="areas/{{ $areas[1]["id"] }}">
-                {{ $areas[1]["name"] }}
-            </a>
-        </li>
-                <li>
-            <a href="areas/{{ $areas[2]["id"] }}">
-                {{ $areas[2]["name"] }}
-            </a>
-        </li>
+        @endforeach
     </ul>
-</body>
-
-</html>
+</x-layout>
