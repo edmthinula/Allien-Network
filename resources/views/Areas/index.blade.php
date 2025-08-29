@@ -11,4 +11,5 @@
         </li>
         @endforeach
     </ul>
+    {{ $areas->links() }}
 </x-layout>
