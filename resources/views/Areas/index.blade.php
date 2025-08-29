@@ -5,8 +5,8 @@
     <ul>
         @foreach ($areas as $area)
         <li>
-            <x-card href="areas/{{ $area['id'] }}" :highlight="$area['population']>120">
-                <h3>{{ $area["name"] }}</h3>
+            <x-card href="{{ route('areas.show',$area->id)}}" :highlight="$area['population']>120">
+                <h3>{{ $area->name }}</h3>
             </x-card>
         </li>
         @endforeach

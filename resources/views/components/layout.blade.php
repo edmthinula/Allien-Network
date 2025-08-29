@@ -14,8 +14,8 @@
     <header>
         <nav>
             <h1>Allien Network</h1>
-            <a href="/areas">All Areas</a>
-            <a href="/areas/create">Create New Area</a>
+            <a href="{{ route('areas.index') }}">All Areas</a>
+            <a href="{{ route('areas.create') }}">Create New Area</a>
         </nav>
     </header>
     <main class="container">

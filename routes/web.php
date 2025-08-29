@@ -7,12 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/areas', [AreaController::class, 'index']);
+Route::get('/areas', [AreaController::class, 'index'])->name('areas.index');
 
-Route::get('/areas/create', function () {
-    return view('areas.create');
-});
+Route::get('/areas/create', [AreaController::class, 'create'])->name('areas.create');
 
-Route::get('/areas/{id}', function ($id) {
-    return view('Areas.show', ["id" => $id]);
-});
+Route::get('/areas/{id}', [AreaController::class, 'show'])->name('areas.show');
