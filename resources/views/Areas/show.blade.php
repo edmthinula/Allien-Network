@@ -35,4 +35,18 @@
         </p>
     </div>
 
+    <form action="{{ route('areas.delete',$area->id) }}" method="POSt">
+        @csrf
+        @method('DELETE')
+        <button
+            type="submit"
+            class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded shadow transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-400"
+            onclick="return confirm('Are you sure you want to delete this area?');">
+            <svg class="inline w-5 h-5 mr-2 -mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            Delete Area
+        </button>
+    </form>
+
 </x-layout>

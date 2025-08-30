@@ -32,7 +32,14 @@ class AreaController extends Controller
             'allien_clan_id'=>'required|exists:allien_clans,id' ,
         ]);
         Area::create($validated);
-        return redirect()->route('areas.index');
+        return redirect()->route('areas.index')->with('success','Area Created!');
 
     }
+
+    public function destroy ($id){
+        $area = Area::findOrFail($id);
+        $area->delete();
+        return redirect()->route('areas.index')->with('success','Area Deleted!');
+    }
+
 }
