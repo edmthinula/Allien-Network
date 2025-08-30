@@ -13,33 +13,32 @@ class AreaController extends Controller
         $areas = Area::with('clan')->orderBy('created_at', 'desc')->paginate(10);
         return view('Areas.index', ["areas" => $areas]);
     }
-    public function show($id)
+    public function show(Area $area)
     {
-        $id = Area::with('clan')->findOrFail($id);
-        return view('Areas.show', ["area" => $id]);
+        $area ->load('clan');
+        return view('Areas.show', ["area" => $area]);
     }
     public function create()
     {
         $clans = AllienClan::all();
-        return view('areas.create',['clans'=>$clans]);
+        return view('areas.create', ['clans' => $clans]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $validated = $request->validate([
-            'name'=>'required|string|max:255',
+            'name' => 'required|string|max:255',
             'population' => 'required|integer|min:0|max:250',
-            'discription'=>'required|string|min:20|max:400,',
-            'allien_clan_id'=>'required|exists:allien_clans,id' ,
+            'discription' => 'required|string|min:20|max:400,',
+            'allien_clan_id' => 'required|exists:allien_clans,id',
         ]);
         Area::create($validated);
-        return redirect()->route('areas.index')->with('success','Area Created!');
-
+        return redirect()->route('areas.index')->with('success', 'Area Created!');
     }
 
-    public function destroy ($id){
-        $area = Area::findOrFail($id);
+    public function destroy(Area $area)
+    {
         $area->delete();
-        return redirect()->route('areas.index')->with('success','Area Deleted!');
+        return redirect()->route('areas.index')->with('success', 'Area Deleted!');
     }
-
 }
