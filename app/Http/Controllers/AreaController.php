@@ -9,12 +9,12 @@ class AreaController extends Controller
 {
     public function index()
     {
-        $areas = Area::orderBy('created_at', 'desc')->paginate(10);
+        $areas = Area::with('clan')->orderBy('created_at', 'desc')->paginate(10);
         return view('Areas.index', ["areas" => $areas]);
     }
     public function show($id)
     {
-        $id = Area::findOrFail($id);
+        $id = Area::with('clan')->findOrFail($id);
         return view('Areas.show', ["area" => $id]);
     }
     public function create()

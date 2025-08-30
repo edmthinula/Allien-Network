@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\AllienClan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,10 @@ class AreaFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>fake()->name(),
-            'population' => fake()->numberBetween(0,200),
-            'discription' =>fake()->realText(500),
+            'name' => fake()->name(),
+            'population' => fake()->numberBetween(0, 200),
+            'discription' => fake()->realText(500),
+            'allien_clan_id' => AllienClan::inRandomOrder()->first()->id,
         ];
     }
 }
