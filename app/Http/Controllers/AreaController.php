@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AllienClan;
 use App\Models\Area;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,19 @@ class AreaController extends Controller
     }
     public function create()
     {
-        return view('areas.create');
+        $clans = AllienClan::all();
+        return view('areas.create',['clans'=>$clans]);
+    }
+
+    public function store(Request $request){
+        $validated = $request->validate([
+            'name'=>'required|string|max:255',
+            'population' => 'required|integer|min:0|max:250',
+            'discription'=>'required|string|min:20|max:400,',
+            'allien_clan_id'=>'required|exists:allien_clans,id' ,
+        ]);
+        Area::create($validated);
+        return redirect()->route('areas.index');
+
     }
 }
