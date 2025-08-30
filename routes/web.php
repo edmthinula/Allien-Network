@@ -11,4 +11,8 @@ Route::get('/areas', [AreaController::class, 'index'])->name('areas.index');
 
 Route::get('/areas/create', [AreaController::class, 'create'])->name('areas.create');
 
-Route::get('/areas/{id}', [AreaController::class, 'show'])->name('areas.show');
+Route::get('/areas/{area}', [AreaController::class, 'show'])->name('areas.show');
+
+Route::post('/areas',[AreaController::class,'store'])->name('areas.store');
+
+Route::delete('/area/{area}',[AreaController::class,'destroy'])-> name('areas.delete');

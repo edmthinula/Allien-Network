@@ -7,6 +7,7 @@
         <li>
             <x-card href="{{ route('areas.show',$area->id)}}" :highlight="$area['population']>120">
                 <h3>{{ $area->name }}</h3>
+                <P>{{ $area->clan->name }}</P>
             </x-card>
         </li>
         @endforeach

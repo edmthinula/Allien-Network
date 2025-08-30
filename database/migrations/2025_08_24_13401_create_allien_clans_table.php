@@ -7,18 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('areas', function (Blueprint $table) {
-            $table->id();
+        Schema::create('allien_clans', function (Blueprint $table) {
+            $table->id(); // BIGINT UNSIGNED
             $table->timestamps();
             $table->string('name');
-            $table->integer('population');
-            $table->text('discription');
-            $table->foreignId('allien_clan_id')->constrained()->onDelete('cascade');
+            $table->text('description');
+            $table->string('location');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('allien_clans');
     }
 };
