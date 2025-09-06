@@ -21,6 +21,8 @@
             <h1>Allien Network</h1>
             <a href="{{ route('areas.index') }}">All Areas</a>
             <a href="{{ route('areas.create') }}">Create New Area</a>
+            <a href="{{ route('show.login') }}">Login</a>
+            <a href="{{ route('show.register') }}">Register</a>
         </nav>
     </header>
     <main class="container">

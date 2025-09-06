@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AreaController;
 
@@ -16,3 +17,7 @@ Route::get('/areas/{area}', [AreaController::class, 'show'])->name('areas.show')
 Route::post('/areas',[AreaController::class,'store'])->name('areas.store');
 
 Route::delete('/area/{area}',[AreaController::class,'destroy'])-> name('areas.delete');
+
+Route::get('/register',[AuthController::class,'showRegister'])->name('show.register');
+
+Route::get('/login',[AuthController::class,'showLogin'])->name('show.login');
