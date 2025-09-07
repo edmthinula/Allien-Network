@@ -7,7 +7,7 @@
         </div>
 
         <div class="auth-card">
-            <form action="" method="">
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
 
                 <div class="text-center mb-8">
@@ -45,7 +45,6 @@
                     <a href="{{ route('show.register') }}" class="text-blue-600 hover:text-blue-800 font-medium">Sign up</a>
                 </p>
 
-                <!-- validation errors -->
                 @if($errors->any())
                 <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                     @foreach ($errors->all() as $error)
