@@ -20,21 +20,26 @@
         <nav>
             <h1>Allien Network</h1>
             <a href="{{ route('areas.index') }}">All Areas</a>
-            <a href="{{ route('areas.create') }}">Create New Area</a>
+            @guest
             <button class="btn">
-
                 <a href="{{ route('show.login') }}">Login</a>
             </button>
             <button class="btn">
-
                 <a href="{{ route('show.register') }}">Register</a>
             </button>
+            @endguest
+            @auth
+            <a href="{{ route('areas.create') }}">Create New Area</a>
+            <span class="border-r-2 pr-2">
+                Hi there, {{ Auth::user()->name }}
+            </span>
             <form action="{{ route('logout') }}" method="POST" class="m-0">
                 @csrf
                 <button class="btn">
                     Logout
                 </button>
             </form>
+            @endauth
         </nav>
     </header>
     <main class="container">
