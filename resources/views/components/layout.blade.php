@@ -19,7 +19,6 @@
     <header>
         <nav>
             <h1>Allien Network</h1>
-            <a href="{{ route('areas.index') }}">All Areas</a>
             @guest
             <button class="btn">
                 <a href="{{ route('show.login') }}">Login</a>
@@ -29,6 +28,7 @@
             </button>
             @endguest
             @auth
+            <a href="{{ route('areas.index') }}">All Areas</a>
             <a href="{{ route('areas.create') }}">Create New Area</a>
             <span class="border-r-2 pr-2">
                 Hi there, {{ Auth::user()->name }}
