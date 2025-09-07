@@ -12,7 +12,7 @@
 
 <body>
     @if(session('success'))
-    <div class="p-4 text-center bg-green-50 text-green-500 font-bold" >
+    <div class="p-4 text-center bg-green-50 text-green-500 font-bold">
         {{ session('success') }}
     </div>
     @endif
@@ -21,8 +21,20 @@
             <h1>Allien Network</h1>
             <a href="{{ route('areas.index') }}">All Areas</a>
             <a href="{{ route('areas.create') }}">Create New Area</a>
-            <a href="{{ route('show.login') }}">Login</a>
-            <a href="{{ route('show.register') }}">Register</a>
+            <button class="btn">
+
+                <a href="{{ route('show.login') }}">Login</a>
+            </button>
+            <button class="btn">
+
+                <a href="{{ route('show.register') }}">Register</a>
+            </button>
+            <form action="{{ route('logout') }}" method="POST" class="m-0">
+                @csrf
+                <button class="btn">
+                    Logout
+                </button>
+            </form>
         </nav>
     </header>
     <main class="container">
